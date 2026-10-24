@@ -1,4 +1,3 @@
-
 name: Build CatHunter APK
 
 on:
@@ -22,4 +21,3 @@ jobs:
         run: |
           ls -lh
           unzip -t CatHunter-Android-Build-Setup.zip
-          
