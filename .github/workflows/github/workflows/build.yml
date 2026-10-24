@@ -3,23 +3,23 @@ name: Build CatHunter APK
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'CatHunter-Android-Build-Setup.zip'
+      - '.github/workflows/build.yml'
 
 permissions:
   contents: read
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
     steps:
-      - name: Download project ZIP
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Extract project
+      - name: Check ZIP file
         run: |
-          unzip -o CatHunter-Android-Build-Setup.zip -d extracted
-          ls -la extracted
-
-      - name: Check project files
-        run: |
-          find extracted -name ProjectVersion.txt
-          find extracted -name manifest.json
+          ls -lh
+          unzip -t CatHunter-Android-Build-Setup.zip
+          
